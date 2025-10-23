@@ -12,9 +12,10 @@
 .code 32 /* Select ARM instruction set */
 .global main /* Specify global symbol */
 .equ Threshhold, 100
+.equ Input, Threshhold + 1
 main:
-        mov R0, #Threshhold
-        mov R1, #Threshhold
+        mov R0, #Input
+        mov R1, #Input
         
         cmp R0, #Threshhold // setze flags
         bls else // wenn R0 <= Threshhold, dann springe

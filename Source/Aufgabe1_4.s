@@ -24,10 +24,10 @@ main:
         // Überlauf
         mov R6, #0
 
-        adds R4, R0, R2
-        adcs R5, R1, R3
+        adds R4, R0, R2 // addire die lower bits und setze flags
+        adcs R5, R1, R3 // addire upper bits und addire das carry und setze flags
 
-        movvs R6, #1
+        movvs R6, #1 // wenn überlauf, dann schreibe 1 in das überlauf register
 
 stop:
 	nop
