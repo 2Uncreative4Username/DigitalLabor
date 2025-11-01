@@ -3,7 +3,7 @@
  *
  * SoSe 2024
  *
- *  Created on: <$Date>
+ *  Created on: 30.10.2025
  *      Author: <$Name>
  *
  *	Aufgabe : Addition von Zahlen
@@ -13,19 +13,18 @@
 .global main /* Specify global symbol */
 main:
         // a)
-        mov R0, #4294967295
+        mov R0, #0xFFFFFFFF
         mov R1, #1
         add R2, R1, R0
         
         // b)
-        mov R3, #0xFFFFFFFF
+        mov R3, #~0
         mov R4, #1
         add R5, R4, R3
 
         // c) 
-        mov R6, #0x80000000
-        mov R7, #0x80000000
-        add R8, R7, R6
+        mov R6, (1<<31) //0x80000000
+        add R7, R6, R6
 
 stop:
  	nop

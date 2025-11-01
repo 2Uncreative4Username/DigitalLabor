@@ -14,9 +14,9 @@
 main:
 
         // Faktoren
-        movs R0, #5
+        ldrs R0, =5
         beq stop
-        movs R1, #4
+        ldrs R1, =4
         beq stop // Ergebnis ist 0 wenn einer der Faktoren 0 ist
 
         // Ergebnis

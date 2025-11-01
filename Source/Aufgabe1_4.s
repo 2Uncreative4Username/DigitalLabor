@@ -3,7 +3,7 @@
  *
  * SoSe 2024
  *
- *  Created on: <$Date>
+ *  Created on: 30.10.2025
  *      Author: <$Name>
  *
  *	Aufgabe : Maskenoperationen
@@ -13,21 +13,18 @@
 .global main /* Specify global symbol */
 main:
         // Zahl 1
-        mov R0, #0
-        mov R1, #0
+        ldr R0, =0  // lower bits
+        ldr R1, =0  // higher bits
         // Zahl 2
-        mov R2, #0
-        mov R3, #0
-        // Ergebnis
-        mov R4, #0
-        mov R5, #0
-        // Überlauf
-        mov R6, #0
+        ldr R2, =0
+        ldr R3, =0
+        
 
         adds R4, R0, R2 // addire die lower bits und setze flags
         adcs R5, R1, R3 // addire upper bits und addire das carry und setze flags
-
-        movvs R6, #1 // wenn überlauf, dann schreibe 1 in das überlauf register
+        // Überlauf
+        movcc R6, #0  // wenn kein überlauf, dann schreibe 0 in das überlauf register
+        movcs R6, #1 // wenn überlauf, dann schreibe 1 in das überlauf register
 
 stop:
 	nop
