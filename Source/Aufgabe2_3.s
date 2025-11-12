@@ -11,29 +11,48 @@
 .text /* Specify that code goes in text segment */
 .code 32 /* Select ARM instruction set */
 .global main /* Specify global symbol */
+
 .equ THRESHHOLD, 80
+.equ DATAAMOUNT, 8
+variable_a:
+.word 0x00000001
+.word 0x00000002
+.word 0x00000003
+.word 0x00000004
+.word 0x00000005
+.word 0x00000006
+.word 0x00000007
+.word 0x00000081
+
 main:
+        mov r0, #0  // Ausgaberegister Initialisieren
 
-        mov R0, #0
-        mov R1, #0
-        mov R2, #0
-        mov R3, #0
-        mov R4, #0
-        mov R5, #0
-        mov R6, #0
-        mov R7, #0
+        ldr r1,=variable_a // r1 = &a r1 ist pointer
 
-        mov R8, #0
+        mov r4, #DATAAMOUNT
+// loop to iterate over addresses
+while:
+        ldr r2, [r1]//, #4 // r2 = *r1; r1++;
+        cmp r2, #THRESHHOLD
+        movhi r2, #80
+        movls r2, #0
+        str r2, [r1]
+        orr r0, r0, r2
+        mov r0, r0, lsl #4
+        add r1, #4 //r1++
+        
 
-        cmp R0, THRESHHOLD
-        cmp R1, THRESHHOLD
-        cmp R2, THRESHHOLD
-        cmp R3, THRESHHOLD
-        cmp R4, THRESHHOLD
-        cmp R5, THRESHHOLD
-        cmp R6, THRESHHOLD
-        cmp R7, THRESHHOLD
+        subs r4, #1 // condition to break loop
+        bne while
 
+
+        /*
+        ldr r1,=variable_a
+
+        ldr r2, [r1], #4
+        ldr r3, [r1], #4
+        ldr r4, [r1], #4
+        */
 stop:
 	nop
 	bal stop
