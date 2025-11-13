@@ -3,7 +3,7 @@
  *
  * SoSe 2024
  *
- *  Created on: <$Date>
+ *  Created on: 13.12.2025
  *      Author: <$Name>
  *
  *	Aufgabe : Multiplikation
@@ -27,7 +27,7 @@ main:
 while:
         adds r2, r1 // R2 += R1 <> R0 mal
         addvs r3, #1 // wenn überlauf R3++
-        subs r0, #1 // faktor 1 --
+        subs r0, #1 // faktor1 --
         bne while // wenn not zero do again
 
 stop:

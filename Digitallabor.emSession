@@ -24,7 +24,7 @@
  <Memory1>
   <MemoryWindow addressSpace="" dataSize="1" autoEvaluate="0" viewMode="0" viewType="4" addressOrder="0" columnsText="" refreshPeriod="0" name="Executable_1_Debug" sizeText="" addressText=""/>
   <MemoryWindow addressSpace="" dataSize="1" autoEvaluate="0" viewMode="0" viewType="4" addressOrder="0" columnsText="" refreshPeriod="0" name="Digitallabor_Debug" sizeText="" addressText=""/>
-  <MemoryWindow addressSpace="" dataSize="1" autoEvaluate="0" viewMode="0" viewType="4" addressOrder="0" columnsText="" refreshPeriod="0" name="Aufgabe2_Debug" sizeText="" addressText=""/>
+  <MemoryWindow addressSpace="" dataSize="4" autoEvaluate="0" viewMode="1" viewType="4" addressOrder="0" columnsText="" refreshPeriod="0" name="Aufgabe2_Debug" sizeText="" addressText="0x40000330"/>
   <MemoryWindow addressSpace="" dataSize="1" autoEvaluate="0" viewMode="0" viewType="4" addressOrder="0" columnsText="" refreshPeriod="0" name="BeispielAufgabe_Debug" sizeText="" addressText=""/>
   <MemoryWindow addressSpace="" dataSize="1" autoEvaluate="0" viewMode="0" viewType="4" addressOrder="0" columnsText="" refreshPeriod="0" name="Aufgabe5_Debug" sizeText="" addressText="0xe0028010"/>
   <MemoryWindow addressSpace="" dataSize="1" autoEvaluate="0" viewMode="0" viewType="4" addressOrder="0" columnsText="" refreshPeriod="0" name="Aufgabe1_Debug" sizeText="" addressText=""/>
@@ -75,10 +75,10 @@
  </Memory4>
  <Project>
   <ProjectSessionItem path="Digitallabor"/>
-  <ProjectSessionItem path="Digitallabor;Aufgabe1"/>
-  <ProjectSessionItem path="Digitallabor;Aufgabe1;Source"/>
   <ProjectSessionItem path="Digitallabor;Aufgabe2"/>
   <ProjectSessionItem path="Digitallabor;Aufgabe2;Source"/>
+  <ProjectSessionItem path="Digitallabor;Aufgabe3"/>
+  <ProjectSessionItem path="Digitallabor;Aufgabe3;Source"/>
   <ProjectSessionItem path="Digitallabor;Aufgabe8"/>
   <ProjectSessionItem path="Digitallabor;Aufgabe8;Source"/>
   <ProjectSessionItem path="Digitallabor;Aufgabe9"/>
@@ -159,13 +159,9 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="23" y="6" useTextEdit="1" path="Source/Aufgabe1_1.s" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="23" y="6" useTextEdit="1" path="Source/Aufgabe1_2.s" left="0" top="3" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="23" y="6" useTextEdit="1" path="Source/Aufgabe1_3.s" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="23" y="6" useTextEdit="1" path="Source/Aufgabe1_4.s" left="0" top="2" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="2" y="4" useTextEdit="1" path="Source/Aufgabe2_1.s" left="0" selected="1" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="18" y="18" useTextEdit="1" path="Source/Aufgabe2_2.s" left="0" top="2" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="5" y="14" useTextEdit="1" path="Source/Aufgabe2_3.s" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="26" y="27" useTextEdit="1" path="Source/Aufgabe2_1.s" left="0" selected="1" top="43" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="18" y="17" useTextEdit="1" path="Source/Aufgabe2_2.s" left="0" top="2" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="46" useTextEdit="1" path="Source/Aufgabe2_3.s" left="0" top="26" codecName="Default"/>
  </Files>
- <EMStudioWindow activeProject="Aufgabe1" fileDialogDefaultFilter="*.asm;*.s;*.inc" autoConnectTarget="Simulator" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="C:/hs/dtl/Workspace_DTL/Source" debugSearchPath="" autoConnectCapabilities="4415"/>
+ <EMStudioWindow activeProject="Aufgabe2" fileDialogDefaultFilter="*.asm;*.s;*.inc" autoConnectTarget="Simulator" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="C:/hs/dtl/Workspace_DTL/Source" debugSearchPath="" autoConnectCapabilities="4415"/>
 </session>
