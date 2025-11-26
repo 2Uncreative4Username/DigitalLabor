@@ -12,7 +12,7 @@
 .code 32 /* Select ARM instruction set */
 .global main /* Specify global symbol */
 
-.equ DURATION, 5
+.equ DURATION, 3
 .equ THRESHHOLD, 80
 .equ DATAAMOUNT, 8
 variable_a:
@@ -28,7 +28,7 @@ variable_a:
 main:
         mov r0, #0
         ldr r1,=variable_a
-        mov r4, #DATAAMOUNT
+        mov r3, #DATAAMOUNT
 
 while:
         ldr r2, [r1], #4
@@ -39,23 +39,23 @@ while:
 
         bl wait
 
-        subs r4, #1
+        subs r3, #1
         movne r0, r0, lsl #4
         bne while
 
         b stop
 
 wait:
-        stmfd sp!,{r0,r1,r2,r4,lr}
-        add sp,#-4
+        stmfd sp!,{r0,r1,r2,r3,lr}    //save working registers and  to stack
+        sub sp, #4
         
         mov r0, #DURATION
-waitLoop:
-        adds r0,#-1
-        bne waitLoop
+loop:
+        subs r0, #1
+        bne loop
         
         add sp,#4
-        ldmfd sp!,{r0,r1,r2,r4,pc}
+        ldmfd sp!,{r0,r1,r2,r3,pc}
         
 
 stop:
