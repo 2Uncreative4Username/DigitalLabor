@@ -4,7 +4,7 @@
  * SoSe 2024
  *
  *  Created on: 13.12.2025
- *      Author: <$Name>
+ *      Author: Fabian Swinne
  *
  *	Aufgabe : Multiplikation
  */
@@ -18,16 +18,16 @@ main:
         mov r3, #0
 
         // Faktoren
-        ldrs r0, =5
+        ldrs r0, =5 // Faktor1
         beq stop
-        ldrs r1, =4
+        ldrs r1, =4 // Faktor2
         beq stop // Ergebnis ist 0 wenn einer der Faktoren 0 ist
 
 
 while:
-        adds r2, r1 // R2 += R1 <> R0 mal
+        adds r2, r1 // R2 += R1 // R0 mal
         addvs r3, #1 // wenn überlauf R3++
-        subs r0, #1 // faktor1 --
+        subs r0, #1 // Faktor1 --
         bne while // wenn not zero do again
 
 stop:

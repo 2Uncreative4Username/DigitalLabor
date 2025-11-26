@@ -4,7 +4,7 @@
  * SoSe 2024
  *
  *  Created on: 13.12.2025
- *      Author: <$Name>
+ *      Author: Fabian Swinne
  *
  *	Aufgabe : Werte Binarisieren
  */
@@ -27,18 +27,18 @@ variable_a:
 main:
         mov r0, #0  // Ausgaberegister Initialisieren
 
-        ldr r1,=variable_a // r1 = &a r1 ist pointer
+        ldr r1,=variable_a // r1 = &a
 
         mov r4, #DATAAMOUNT
 // loop to iterate over addresses
 while:
-        ldr r2, [r1] // r2 = *r1
+        ldr r2, [r1], #4 // r2 = *r1
         cmp r2, #THRESHHOLD // r2 anpassen
         movhi r2, #8
-        movls r2, #0
-        str r2, [r1] // r2 speichern
-        orr r0, r0, r2 // r2 in r0 übertragen
-        add r1, #4 // r1++
+        
+        //str r2, [r1] // r2 speichern
+        orrhi r0, r0, r2 // r2 in r0 übertragen
+        //add r1, #4 // r1++
         
 
         subs r4, #1 // condition to break loop

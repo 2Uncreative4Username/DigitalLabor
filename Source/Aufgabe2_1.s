@@ -4,7 +4,7 @@
  * SoSe 2024
  *
  *  Created on: 13.12.2025
- *      Author: <$Name>
+ *      Author: Fabian Swinne
  *
  *	Aufgabe : 64 Bit Addition
  */
@@ -49,19 +49,19 @@ wie gegeben
 .equ CHESTNUTS_bm, (1<<10)
 .equ NUTS_bm, (ALMOND_bm|PEANUT_bm|CHESTNUTS_bm)
 
-.equ APPLE_bm, (1<<11)
-.equ MANGO_bm, (1<<12)
-.equ LEMON_bm, (1<<13)
+.equ APPLE_bm, (1<<12)
+.equ MANGO_bm, (1<<13)
+.equ LEMON_bm, (1<<14)
 .equ FRUITS_bm, (APPLE_bm|MANGO_bm|LEMON_bm)
 
-.equ BRAKFAST_bm, (BREAD_bm|BUTTER_bm|CHEESE_bm|MILK_bm|PEANUT_bm|LEMON_bm)
+.equ BREAKFAST_bm, (BASICS_bm | MILK_bm | PEANUT_bm | LEMON_bm)
 
 main:
-        mov R0, BREAKFAST_bm
-        mov R1, BREAKFAST_bm|NUTS_bm
-        mov R2, (BREAKFAST_bm & ~MILK_bm)|VINE_bm
-        mov R3, FRUITS_bm|MILK_bm|(MILK_bm<<16)
-        mov R4, (BREAKFAST_bm & ~BUTTER_bm)
+        ldr R0, =BREAKFAST_bm
+        ldr R1, =(BREAKFAST_bm|NUTS_bm)
+        ldr R2, =(BREAKFAST_bm & ~MILK_bm)|VINE_bm
+        ldr R3, =FRUITS_bm|MILK_bm|(MILK_bm<<16)
+        ldr R4, =(BREAKFAST_bm & ~BUTTER_bm & ~MILK_bm)|VINE_bm
 stop:
 	nop
 	bal stop
