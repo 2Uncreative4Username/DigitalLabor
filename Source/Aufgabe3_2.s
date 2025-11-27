@@ -48,11 +48,13 @@ while:
 
 //takes r4 as parameter
 wait:
-        push {r0-r3}
+        push {r0}
+        mov r0, r4
+
 loop:
-        subs r4, #1
+        subs r0, #1
         bne loop
-        pop {r0-r3}
+        pop {r0}
         bx lr
 
 stop:

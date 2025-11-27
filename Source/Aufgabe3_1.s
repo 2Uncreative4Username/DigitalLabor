@@ -47,14 +47,12 @@ while:
 
 wait:
         stmfd sp!,{r0,r1,r2,r3,lr}    //save working registers and  to stack
-        sub sp, #4
-        
+                
         mov r0, #DURATION
 loop:
         subs r0, #1
         bne loop
         
-        add sp,#4
         ldmfd sp!,{r0,r1,r2,r3,pc}
         
 
