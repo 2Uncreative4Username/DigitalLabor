@@ -37,27 +37,25 @@ while:
         
         orrhi r0, r0, r2
 
-        bl wait
+        bl delay
 
         subs r3, #1
         movne r0, r0, lsl #4
         bne while
 
-        b stop
+stop:
+	nop
+	bal stop
 
-wait:
-        stmfd sp!,{r0,r1,r2,r3,lr}    //save working registers and  to stack
+
+delay:
+        stmfd sp!,{r0,lr}
                 
         mov r0, #DURATION
 loop:
         subs r0, #1
         bne loop
         
-        ldmfd sp!,{r0,r1,r2,r3,pc}
-        
-
-stop:
-	nop
-	bal stop
+        ldmfd sp!,{r0,pc}
 
 .end

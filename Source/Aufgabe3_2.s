@@ -38,27 +38,25 @@ while:
         orrhi r0, r0, r2
 
         mov r6, #DURATION
-        bl wait
+        bl delay
 
         subs r3, #1
         movne r0, r0, lsl #4
         bne while
 
-        b stop
-
-//takes r4 as parameter
-wait:
-        push {r0}
-        mov r0, r4
-
-loop:
-        subs r0, #1
-        bne loop
-        pop {r0}
-        bx lr
-
 stop:
 	nop
 	bal stop
+
+//takes r4 as parameter
+delay:
+        push {r0}
+        mov r0, r4
+
+delay_loop:
+        subs r0, #1
+        bne delay_loop
+        pop {r0}
+        bx lr
 
 .end

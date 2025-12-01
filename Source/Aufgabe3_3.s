@@ -39,25 +39,25 @@ while:
 
         mov r6, #DURATION
         str r6,[sp,#-4]!
-        bl wait
+        bl delay
 
         subs r3, #1
         movne r0, r0, lsl #4
         bne while
 
-        b stop
+stop:
+	nop
+	bal stop
 
 //takes r4 as parameter
-wait:
-        stmfd sp!,{r0,r1,r2,r3,lr}
-        ldr r0,[sp,#20]
+delay:
+        stmfd sp!,{r0}
+        ldr r0,[sp,#4]
 loop:
         subs r0, #1
         bne loop
         
-        ldmfd sp!,{r0,r1,r2,r3,pc}
-stop:
-	nop
-	bal stop
+        ldmfd sp!,{r0}
+        bx lr
 
 .end

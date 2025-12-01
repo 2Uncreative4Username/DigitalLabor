@@ -38,13 +38,14 @@ stop:
 
 
 .thumb
-    .thumb_func
-    .global lfsr32_step
+.thumb_func
+.global lfsr32_step
 
 /* Polynom: x^21 + x^15 + x^3 + 1 */
 /* taps: bit21, bit15, bit3, bit0 */
 
 lfsr32_step:
+    push {r1-r4}
     mov     r1, r0          /* state-Kopie */
     mov     r4, #1          /* Maske für bit0 */
 
@@ -75,7 +76,7 @@ lfsr32_step:
 
     /* ---- einfügen ---- */
     orr     r0, r2
-
+    pop {r1-r4}
     bx      lr
 .end
 
