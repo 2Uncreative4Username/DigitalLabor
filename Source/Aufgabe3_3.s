@@ -49,11 +49,11 @@ stop:
 	nop
 	bal stop
 
-//takes r4 as parameter
+
 delay:
         stmfd sp!,{r0}
         ldr r0,[sp,#4]
-loop:
+delay_loop:
         subs r0, #1
         bne loop
         

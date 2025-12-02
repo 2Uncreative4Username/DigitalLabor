@@ -52,7 +52,7 @@ delay:
         stmfd sp!,{r0,lr}
                 
         mov r0, #DURATION
-loop:
+delay_loop:
         subs r0, #1
         bne loop
         
