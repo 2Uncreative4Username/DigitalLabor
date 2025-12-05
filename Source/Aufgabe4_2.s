@@ -15,13 +15,25 @@
 .equ DIGITS, 8
 .equ TESTAMOUNT, 1
 variable_a:
-.word 0x00000051
+.word 0x00000003
+.word 0x00000045
+.word 0x00000027
+.word 0x00000076
+.word 0x00000099
 
 variable_b:
-.word 0x00000051
+.word 0x00000012
+.word 0x00000038
+.word 0x00000056
+.word 0x00000059
+.word 0x00000099
 
 variable_c:
-.word 0x00000051
+.word 0x00000015
+.word 0x00000083
+.word 0x00000083
+.word 0x00000135
+.word 0x00000198
 
 // r10, r11, r12 for variables
 main:
@@ -35,12 +47,13 @@ main_loop:
         ldr r0, [r10], #4
         str r0, [sp,#-4]!
         ldr r0, [r11], #4
-        str r0, [sp,#-8]!
+        str r0, [sp,#-4]!
         ldr r1, [r12], #4
         bl addBcd
 
         cmp r0,r1
-	moveq r4, #1, ror r2 
+	moveq r4, #1
+        moveq r4, r4, lsl r2 
 	movne r4, #0 
 	orr r3, r3, r4
 
@@ -55,14 +68,15 @@ stop:
 // parameters through stack
 // return in r0
 addBcd:
-        push {r1-r7}
+        push {r1-r8}
         
         mov r0, #0        // return/result = 0
-        ldr r1,[sp,#28]   // summand 1
-        ldr r2,[sp,#32]   // summand 2
+        ldr r1,[sp,#32]   // summand 1
+        ldr r2,[sp,#36]   // summand 2
         mov r3, #0        // digit counter
         mov r4, #0xf      // digit mask
         mov r5, #0        // carry
+        mov r8, #0        // rotate register
 
 addBcd_loop:
         and r6, r1, r4    // isolate digits
@@ -74,18 +88,19 @@ addBcd_loop:
 
 	// check for overflow 
 	cmp r6, #9
-	subhi r5, r6, #9
-	subhi r6, r6, #9
+	subhi r5, r6, #1
+	subhi r6, r6, #10
 
-	mov r6, r6, ror r3
+	mov r6, r6, lsl r8
 
 	orr r0, r0, r6
 
         mov r4, r4, lsl #4 // Digit mask left shiften
         add r3,#1          // digit counter ++
+        add r8,#4
         cmp r3,#DIGITS     // loop condition
         bne addBcd_loop
 
-        pop {r1-r7}
+        pop {r1-r8}
         bx lr
 .end

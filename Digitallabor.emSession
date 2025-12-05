@@ -167,7 +167,8 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="8" y="64" useTextEdit="1" path="Source/Aufgabe4_2.s" left="0" selected="1" top="54" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="17" y="90" useTextEdit="1" path="Source/Aufgabe4_2.s" left="0" selected="1" top="33" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="24" y="40" useTextEdit="1" path="Source/Aufgabe3_3.s" left="0" top="33" codecName="Default"/>
  </Files>
- <EMStudioWindow activeProject="Aufgabe3" fileDialogDefaultFilter="*.asm;*.s;*.inc" autoConnectTarget="Simulator" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="C:/hs/dtl/Workspace_DTL/Source" debugSearchPath="" autoConnectCapabilities="4415"/>
+ <EMStudioWindow activeProject="Aufgabe4" fileDialogDefaultFilter="*.asm;*.s;*.inc" autoConnectTarget="Simulator" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="C:/hs/dtl/Workspace_DTL/Source" debugSearchPath="" autoConnectCapabilities="4415"/>
 </session>
