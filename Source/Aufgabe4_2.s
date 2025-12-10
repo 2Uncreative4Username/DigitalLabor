@@ -13,7 +13,7 @@
 .global main /* Specify global symbol */
 
 .equ DIGITS, 8
-.equ TESTAMOUNT, 1
+.equ TESTAMOUNT, 5
 variable_a:
 .word 0x00000003
 .word 0x00000045
@@ -79,23 +79,23 @@ addBcd:
         mov r8, #0        // rotate register
 
 addBcd_loop:
-        and r6, r1, r4    // isolate digits
-	and r7, r2, r4
-	add r6, r6, r7    // add digits
-	cmp r5, #0        // considder carry
-	addne r6, r6, r5  // if c != 0 { tmp += c; c = 0;}
-	movne r5, #0 
+	mov r6, r1, ror r8	// right shift
+	mov r7, r2, ror r8 
 
-	// check for overflow 
-	cmp r6, #9
-	subhi r5, r6, #1
-	subhi r6, r6, #10
+	and r6, r6, r4		// isolate didgits
+	and r7, r7, r4
 
-	mov r6, r6, lsl r8
+	add r6, r6, r7		// add didgits
+	add r6, r6, r5		// add carry
+	mov r5, #0 
 
+	cmp r6, #9		// handle carry
+	subhi r6, r6, #10 
+	movhi r5, #1 
+
+	mov r6, r6, lsl r8 	// write result
 	orr r0, r0, r6
 
-        mov r4, r4, lsl #4 // Digit mask left shiften
         add r3,#1          // digit counter ++
         add r8,#4
         cmp r3,#DIGITS     // loop condition
