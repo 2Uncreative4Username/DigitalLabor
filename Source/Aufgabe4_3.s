@@ -12,16 +12,16 @@
 .code 32 /* Select ARM instruction set */
 .global main /* Specify global symbol */
 main:
-	sub sp,#20 
+	sub sp,#20              // alocate memory on the stack
 	mov r0,#20 
-	str r0,[sp]
+	str r0,[sp]             // save first parameter on the stack
 	mov r1,#5
-	str r1,[sp,#4]
+	str r1,[sp,#4]          // save 2 parameter on the stack
 	bl division 
 	ldr r2,[sp,#8] 		// load Quotient
 	ldr r3,[sp,#12] 	// load Rest
 	ldr r4,[sp,#16] 	// load Error
-	add sp,#20 
+	add sp,#20              // free memory on the stack
 
 stop:
 	nop
@@ -40,17 +40,16 @@ division:
 div_loop:
 	
 	subs r0,r0,r1
-	addpl r2,#1
+	add r2,#1
 	bpl div_loop
 
-	//submi r2,#1
-	addmi r0,r0,r1
+	adds r0,r0,r1
+	subne r2,#1
 
 div_return:
-	// str returns
-	str r2,[sp,#24]
-	str r0,[sp,#28]
-	str r3,[sp,#32]
+	str r2,[sp,#24]		// store Quotient on the stack
+	str r0,[sp,#28]		// store Rest on the stack
+	str r3,[sp,#32]		// store error on the stack
 	pop {r0-r3}
 	bx lr
 .end

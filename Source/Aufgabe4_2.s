@@ -41,7 +41,6 @@ main:
         ldr r11, =variable_b
         ldr r12, =variable_c
         mov r2, #TESTAMOUNT   // loop-counter
-        mov r3, #0            // eval register
         
 main_loop:
         ldr r0, [r10], #4
@@ -50,12 +49,6 @@ main_loop:
         str r0, [sp,#-4]!
         ldr r1, [r12], #4
         bl addBcd
-
-        cmp r0,r1
-	moveq r4, #1
-        moveq r4, r4, lsl r2 
-	movne r4, #0 
-	orr r3, r3, r4
 
         subs r2,#1
         bne main_loop
@@ -96,9 +89,9 @@ addBcd_loop:
 	mov r6, r6, lsl r8 	// write result
 	orr r0, r0, r6
 
-        add r3,#1          // digit counter ++
-        add r8,#4
-        cmp r3,#DIGITS     // loop condition
+        add r3,#1	        // digit counter ++
+        add r8,#4		// increment rortation register by 4
+        cmp r3,#DIGITS 		// loop condition
         bne addBcd_loop
 
         pop {r1-r8}
