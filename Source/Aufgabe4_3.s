@@ -12,30 +12,30 @@
 .code 32 /* Select ARM instruction set */
 .global main /* Specify global symbol */
 main:
+	sub sp,#20 
 	mov r0,#20 
-	str r0,[sp,#-4]!
-	mov r0,#5
-	str r0,[sp,#-4]!
-	sub sp,#12
+	str r0,[sp]
+	mov r1,#5
+	str r1,[sp,#4]
 	bl division 
-	ldr r2,[sp,#0]
-	ldr r3,[sp,#4]
-	ldr r4,[sp,#8]	// 
+	ldr r2,[sp,#8] 		// load Quotient
+	ldr r3,[sp,#12] 	// load Rest
+	ldr r4,[sp,#16] 	// load Error
 	add sp,#20 
 
 stop:
 	nop
 	bal stop
 
-// return Rest, Quotient, Error 
 division:
 	push {r0-r3}
 	ldr r0,[sp,#16]	// Divident
 	ldr r1,[sp,#20]	// Divisor
 	cmp r1,#0
 	moveq r3,#1	// error register
-	beq div_return
+	movne r3,#0
 	mov r2,#0	// Quotient
+	beq div_return
 
 div_loop:
 	
@@ -43,11 +43,14 @@ div_loop:
 	addpl r2,#1
 	bpl div_loop
 
-	sub r2,#1
-	add r0,r0,r1
+	//submi r2,#1
+	addmi r0,r0,r1
 
 div_return:
 	// str returns
+	str r2,[sp,#24]
+	str r0,[sp,#28]
+	str r3,[sp,#32]
 	pop {r0-r3}
 	bx lr
 .end
